@@ -1,0 +1,20 @@
+{% extends "../partials/layout.njk" %}
+{% from "govuk/components/panel/macro.njk" import govukPanel %}
+
+{% set pageHeaderTitle = "Incident Support Page Confirmation" %}
+{% set pageTitle = applicationName + " - " + pageHeaderTitle %}
+
+{% block content %}
+  <div class="govuk-body">
+    <div class="govuk-width-container">
+      {{ govukPanel({
+        titleText: "Your incident has now been raised",
+        html: "Your reference number<br><strong>INC01223344</strong>"
+      }) }}
+
+      <p class="govuk-heading-m">The product support team will be in touch shortly.</p>
+
+      <p><a href="/">Return to help page</a></p>
+    </div>
+  </div>
+{% endblock %}
