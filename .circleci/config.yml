@@ -180,7 +180,7 @@ workflows:
 #          jira_env_type: staging
 #          context:
 #            - hmpps-common-vars
-#            - raise-an-incident-preprod
+#            - hmpps-it-incident-hub-preprod
 #          requires:
 #            - request-preprod-approval
 #      - request-prod-approval:
@@ -196,7 +196,7 @@ workflows:
 #          slack_channel_name: << pipeline.parameters.releases-slack-channel >>
 #          context:
 #            - hmpps-common-vars
-#            - raise-an-incident-prod
+#            - hmpps-it-incident-hub-prod
 #          requires:
 #            - request-prod-approval
 

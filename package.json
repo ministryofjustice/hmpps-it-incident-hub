@@ -1,8 +1,8 @@
 {
-  "name": "raise-an-incident",
+  "name": "hmpps-it-incident-hub",
   "version": "0.0.1",
-  "description": "Raise An Incident",
-  "repository": "git@github.com:ministryofjustice/raise-an-incident.git",
+  "description": "HMPPS IT Incident Hub",
+  "repository": "git@github.com:ministryofjustice/hmpps-it-incident-hub.git",
   "license": "MIT",
   "scripts": {
     "prepare": "husky install",

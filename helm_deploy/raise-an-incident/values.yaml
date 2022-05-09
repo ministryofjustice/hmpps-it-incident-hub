@@ -1,18 +1,18 @@
 ---
 generic-service:
-  nameOverride: raise-an-incident
+  nameOverride: hmpps-it-incident-hub
 
   replicaCount: 4
 
   image:
-    repository: quay.io/hmpps/raise-an-incident
+    repository: quay.io/hmpps/hmpps-it-incident-hub
     tag: app_version    # override at deployment time
     port: 3000
 
   ingress:
     enabled: true
     host: app-hostname.local    # override per environment
-    tlsSecretName: raise-an-incident-cert
+    tlsSecretName: hmpps-it-incident-hub-cert
 
   livenessProbe:
     httpGet:
@@ -40,7 +40,7 @@ generic-service:
   #     [name of environment variable as seen by app]: [key of kubernetes secret to load]
 
   namespace_secrets:
-    raise-an-incident:
+    hmpps-it-incident-hub:
       APPINSIGHTS_INSTRUMENTATIONKEY: "APPINSIGHTS_INSTRUMENTATIONKEY"
       API_CLIENT_ID: "API_CLIENT_ID"
       API_CLIENT_SECRET: "API_CLIENT_SECRET"
@@ -62,4 +62,4 @@ generic-service:
     cloudplatform-live1-3: "35.177.252.54/32"
 
 generic-prometheus-alerts:
-  targetApplication: raise-an-incident
+  targetApplication: hmpps-it-incident-hub
