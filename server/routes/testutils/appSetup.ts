@@ -8,6 +8,8 @@ import nunjucksSetup from '../../utils/nunjucksSetup'
 import errorHandler from '../../errorHandler'
 import standardRouter from '../standardRouter'
 import UserService from '../../services/userService'
+import FaqService from '../../services/faqService'
+import { faqClientBuilder } from '../../data/faqClient'
 import * as auth from '../../authentication/auth'
 
 const user = {
@@ -48,6 +50,7 @@ function appSetup(route: Router, production: boolean): Express {
   app.use(express.json())
   app.use(express.urlencoded({ extended: true }))
   app.use('/', route)
+
   app.use((req, res, next) => next(createError(404, 'Not found')))
   app.use(errorHandler(production))
 
@@ -56,5 +59,5 @@ function appSetup(route: Router, production: boolean): Express {
 
 export default function appWithAllRoutes({ production = false }: { production?: boolean }): Express {
   auth.default.authenticationMiddleware = () => (req, res, next) => next()
-  return appSetup(allRoutes(standardRouter(new MockUserService())), production)
+  return appSetup(allRoutes(standardRouter(new MockUserService()), new FaqService(faqClientBuilder)), production)
 }
