@@ -6,7 +6,9 @@
 {% from "govuk/components/button/macro.njk" import govukButton %}
 
 {% set pageHeaderTitle = "Raise an Incident" %}
-{% set pageTitle = applicationName + " - " + pageHeaderTitle %}
+{% set pageTitle %}
+{% if errors | length %}Error: {% endif %}{{ applicationName }} - {{ pageHeaderTitle }}
+{% endset %}
 
 {% set backLinkHref = "/incident/description" %}
 
@@ -14,74 +16,83 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <h1 class="govuk-heading-l">{{ pageHeaderTitle }}</h1>
+    {% include "partials/errorSummary.njk" %}
     <h2 class="govuk-heading-m">Please provide the details needed to progress your incident</h2>
     <p class="govuk-body">Please provide your contact details, availability and as much information as you can about your issue.</p>
 
     <form action="/incident/contact" method="POST" novalidate>
       <input type="hidden" name="_csrf" value="{{ csrfToken }}">
       {{ govukCheckboxes({
-        idPrefix: "contact-type",
-        name: "contact-type",
+        idPrefix: "incidentContactType",
+        name: "incidentContactType",
         fieldset: {
           legend: {
             text: "Best contact type",
             isPageHeading: true,
-            classes: "govuk-fieldset__legend--l"
+            classes: "govuk-fieldset__legend--m"
           }
         },
+        errorMessage: errors | findError('incidentContactType'),
         hint: {
           text: "What is the best method for us to contact you on today?"
         },
         items: [
           {
             value: "phone",
-            text: "Telephone"
+            text: "Telephone",
+            checked: formValues.incidentContactType == "phone"
           },
           {
             value: "email",
-            text: "Email"
+            text: "Email",
+            checked: formValues.incidentContactType == "email"
           }
         ]
       }) }}
 
       {{ govukInput({
         label: {
+          classes: "govuk-label--m",
           text: "Contact details"
         },
         hint: {
           text: "E.g. Phone number or justice.gov.uk email address"
         },
-        id: "contact-details",
-        name: "contact-details"
+        errorMessage: errors | findError('incidentContactDetails'),
+        id: "incidentContactDetails",
+        name: "incidentContactDetails"
       }) }}
 
       {{ govukInput({
         label: {
+          classes: "govuk-label--m",
           text: "Availability"
         },
         hint: {
           text: "1PM - 4PM"
         },
-        id: "availability",
-        name: "availability"
+        errorMessage: errors | findError('incidentAvailability'),
+        id: "incidentAvailability",
+        name: "incidentAvailability"
       }) }}
 
       {{ govukTextarea({
-        name: "supporting-information",
-        id: "supporting-information",
+        name: "incidentSupportingInformation",
+        id: "incidentSupportingInformation",
         label: {
           text: "Give details",
-          classes: "govuk-label--l",
+          classes: "govuk-label--m",
           isPageHeading: false
         },
+        errorMessage: errors | findError('incidentSupportingInformation'),
         hint: {
           text: "Offer as much supporting information to help us resolve"
         }
       }) }}
 
       {{ govukFileUpload({
-        id: "document",
-        name: "document",
+        id: "incidentAttachment",
+        name: "incidentAttachment",
         label: {
           text: "Please upload any supporting information (eg, JPEG, Word Document)"
         }

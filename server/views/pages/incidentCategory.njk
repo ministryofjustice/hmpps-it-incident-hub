@@ -3,7 +3,9 @@
 {% from "govuk/components/button/macro.njk" import govukButton %}
 
 {% set pageHeaderTitle = "Raise an Incident" %}
-{% set pageTitle = applicationName + " - " + pageHeaderTitle %}
+{% set pageTitle %}
+{% if errors | length %}Error: {% endif %}{{ applicationName }} - {{ pageHeaderTitle }}
+{% endset %}
 
 {% set backLinkHref = "/incident/type" %}
 
@@ -11,54 +13,60 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <h1 class="govuk-heading-l">{{ pageHeaderTitle }}</h1>
+    {% include "partials/errorSummary.njk" %}
 
     <form action="/incident/category" method="POST" novalidate>
       <input type="hidden" name="_csrf" value="{{ csrfToken }}">
 
       {{ govukRadios({
-        idPrefix: "category",
-        name: "category",
+        idPrefix: "incidentCategory",
+        name: "incidentCategory",
         fieldset: {
           legend: {
             text: "What category would your access issue relate to?",
             isPageHeading: false,
-            classes: "govuk-fieldset__legend--l"
+            classes: "govuk-fieldset__legend--m"
           }
         },
+        errorMessage: errors | findError('incidentCategory'),
         hint: {
           text: "Let us know how"
-        }
+        },
         items: [
           {
             value: "access-denied",
             text: "Access denied",
             hint: {
               text: "Are you having issues accessing the elements of the service?"
-            }
+            },
+            checked: formValues.incidentType == "access-denied"
           },
           {
             value: "account-locked",
             text: "Account locked",
             hint: {
               text: "Has your account been locked?"
-            }
+            },
+            checked: formValues.incidentType == "account-locked"
           },
           {
             value: "access-issue",
             text: "I am raising an access issue",
             hint: {
               text: "Are you having issues accessing parts of the service?"
-            }
+            },
+            checked: formValues.incidentType == "access-issue"
           },
           {
             value: "security-issue",
             text: "I am raising a security Issue",
             hint: {
               text: "Has there been a security breach within your service?"
-            }
+            },
+            checked: formValues.incidentType == "security-issue"
           }
         ]
-      }) })
+      }) }}
 
       {{ govukButton({
         text: "Continue"

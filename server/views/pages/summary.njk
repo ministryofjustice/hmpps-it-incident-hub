@@ -1,0 +1,171 @@
+{% extends "../partials/layout.njk" %}
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/warning-text/macro.njk" import govukWarningText %}
+
+{% set pageHeaderTitle = "Check your answers before submitting an incident" %}
+{% set pageTitle %}
+{% if errors | length %}Error: {% endif %}{{ applicationName }} - {{ pageHeaderTitle }}
+{% endset %}
+
+{% set backLinkHref = "/incident/contact" %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds-from-desktop">
+    <h1 class="govuk-heading-l">{{ pageHeaderTitle }}</h1>
+    {% include "partials/errorSummary.njk" %}
+
+    <h2 class="govuk-heading-m">Incident type</h2>
+    {{ govukSummaryList({
+      rows: [
+        {
+          key: {
+            text: "Incident type"
+          },
+          value: {
+            text: formValues.incidentType
+          },
+          actions: {
+            items: [
+              {
+                href: "/incident/type",
+                text: "Change",
+                visuallyHiddenText: "name"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Incident category"
+          },
+          value: {
+            text: formValues.incidentCategory
+          },
+          actions: {
+            items: [
+              {
+                href: "/incident/category",
+                text: "Change",
+                visuallyHiddenText: "name"
+              }
+            ]
+          }
+        }
+      ]
+    }) }}
+
+    <h2 class="govuk-heading-m">Contact details</h2>
+    {{ govukSummaryList({
+      rows: [
+        {
+          key: {
+            text: "Contact details"
+          },
+          value: {
+            text: formValues.incidentContactDetails
+          },
+          actions: {
+            items: [
+              {
+                href: "/incident/contact",
+                text: "Change",
+                visuallyHiddenText: "name"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Preferred contact details"
+          },
+          value: {
+            text: formValues.incidentContactType
+          },
+          actions: {
+            items: [
+              {
+                href: "/incident/contact",
+                text: "Change",
+                visuallyHiddenText: "name"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Availability"
+          },
+          value: {
+            text: formValues.incidentAvailability
+          },
+          actions: {
+            items: [
+              {
+                href: "/incident/contact",
+                text: "Change",
+                visuallyHiddenText: "name"
+              }
+            ]
+          }
+        }
+      ]
+    }) }}
+
+    <h2 class="govuk-heading-m">Incident details</h2>
+    {{ govukSummaryList({
+      rows: [
+        {
+          key: {
+            text: "Details"
+          },
+          value: {
+            text: formValues.incidentDescription
+          },
+          actions: {
+            items: [
+              {
+                href: "/incident/description",
+                text: "Change",
+                visuallyHiddenText: "name"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Supporting information"
+          },
+          value: {
+            text: formValues.incidentSupportingInformation
+          },
+          actions: {
+            items: [
+              {
+                href: "/incident/contact",
+                text: "Change",
+                visuallyHiddenText: "name"
+              }
+            ]
+          }
+        }
+      ]
+    }) }}
+
+    {{ govukWarningText({
+      text: "Only raise incidents that apply to the visit someone in prison service. If an incident is raised for another application it will not arrive with the correct product team and will slow down resolution. For all other DPS/NOMIS issues please contact the service desk.",
+      iconFallbackText: "Warning"
+    }) }}
+
+    <form action="/incident/summary" method="POST" novalidate>
+      <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+
+      {{ govukButton({
+        text: "Raise your incident"
+      }) }}
+    </form>
+
+  </div>
+</div>
+{% endblock %}

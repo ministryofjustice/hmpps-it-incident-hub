@@ -5,7 +5,13 @@ export type FAQ = {
 }
 
 export type IncidentSessionData = {
-  incidentType: string
+  incidentType?: string
+  incidentCategory?: string
+  incidentDescription?: string
+  incidentContactType?: string
+  incidentContactDetails?: string
+  incidentAvailability?: string
+  incidentSupportingInformation?: string
 }
 
 export type FormError = {
