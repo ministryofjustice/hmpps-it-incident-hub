@@ -1,4 +1,5 @@
 import type { RequestHandler, Router } from 'express'
+import { decode } from 'html-entities'
 
 import asyncMiddleware from '../middleware/asyncMiddleware'
 import FaqService from '../services/faqService'
@@ -14,7 +15,7 @@ export default function routes(router: Router, faqService: FaqService): Router {
           text: faq.heading,
         },
         content: {
-          html: faq.body,
+          html: decode(faq.body),
         },
       }
     })
