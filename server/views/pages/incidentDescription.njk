@@ -1,0 +1,35 @@
+{% extends "../partials/layout.njk" %}
+{% from "govuk/components/textarea/macro.njk" import govukTextarea %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% set pageHeaderTitle = "Raise an Incident" %}
+{% set pageTitle = applicationName + " - " + pageHeaderTitle %}
+
+{% set backLinkHref = "/incident/category" %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">{{ pageHeaderTitle }}</h1>
+
+    <form action="/incident/description" method="POST" novalidate>
+      <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+
+      {{ govukTextarea({
+        name: "description",
+        id: "description",
+        label: {
+          text: "What short description would best explain your issue?",
+          classes: "govuk-label--l",
+          isPageHeading: false
+        }
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+  </div>
+</div>
+
+{% endblock %}

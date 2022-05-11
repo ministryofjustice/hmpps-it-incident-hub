@@ -1,0 +1,75 @@
+{% extends "../partials/layout.njk" %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% set pageHeaderTitle = "Raise an Incident" %}
+{% set pageTitle %}
+{% if errors | length %}Error: {% endif %}{{ applicationName }} - {{ pageHeaderTitle }}
+{% endset %}
+
+{% set backLinkHref = "/" %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">{{ pageHeaderTitle }}</h1>
+
+    <form action="/incident/type" method="POST" novalidate>
+      <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+      {{ govukRadios({
+        idPrefix: "incidentType",
+        name: "incidentType",
+        fieldset: {
+          legend: {
+            text: "What type of issue would you like to raise today?",
+            isPageHeading: false,
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        hint: {
+          text: "This will help you chose which incident type you will be raising today"
+        },
+        items: [
+          {
+            value: "software",
+            text: "I am raising a software issue",
+            hint: {
+              text: "Is your application working as you expected?"
+            },
+            checked: formValues.incidentType == "software"
+          },
+          {
+            value: "data",
+            text: "I am raising a data issue",
+            hint: {
+              text: "Is data missing from your service or incorrect?"
+            },
+            checked: formValues.incidentType == "data"
+          },
+          {
+            value: "access",
+            text: "I am raising a access issue",
+            hint: {
+              text: "Are you having issues accessing parts of the service?"
+            },
+            checked: formValues.incidentType == "access"
+          },
+          {
+            value: "security",
+            text: "I am raising a security Issue",
+            hint: {
+              text: "Has there been a security breach within your service?"
+            },
+            checked: formValues.incidentType == "security"
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+  </div>
+</div>
+
+{% endblock %}

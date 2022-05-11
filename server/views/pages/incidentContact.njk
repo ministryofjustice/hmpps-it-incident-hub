@@ -1,0 +1,97 @@
+{% extends "../partials/layout.njk" %}
+{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/textarea/macro.njk" import govukTextarea %}
+{% from "govuk/components/file-upload/macro.njk" import govukFileUpload %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% set pageHeaderTitle = "Raise an Incident" %}
+{% set pageTitle = applicationName + " - " + pageHeaderTitle %}
+
+{% set backLinkHref = "/incident/description" %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">{{ pageHeaderTitle }}</h1>
+    <h2 class="govuk-heading-m">Please provide the details needed to progress your incident</h2>
+    <p class="govuk-body">Please provide your contact details, availability and as much information as you can about your issue.</p>
+
+    <form action="/incident/contact" method="POST" novalidate>
+      <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+      {{ govukCheckboxes({
+        idPrefix: "contact-type",
+        name: "contact-type",
+        fieldset: {
+          legend: {
+            text: "Best contact type",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--l"
+          }
+        },
+        hint: {
+          text: "What is the best method for us to contact you on today?"
+        },
+        items: [
+          {
+            value: "phone",
+            text: "Telephone"
+          },
+          {
+            value: "email",
+            text: "Email"
+          }
+        ]
+      }) }}
+
+      {{ govukInput({
+        label: {
+          text: "Contact details"
+        },
+        hint: {
+          text: "E.g. Phone number or justice.gov.uk email address"
+        },
+        id: "contact-details",
+        name: "contact-details"
+      }) }}
+
+      {{ govukInput({
+        label: {
+          text: "Availability"
+        },
+        hint: {
+          text: "1PM - 4PM"
+        },
+        id: "availability",
+        name: "availability"
+      }) }}
+
+      {{ govukTextarea({
+        name: "supporting-information",
+        id: "supporting-information",
+        label: {
+          text: "Give details",
+          classes: "govuk-label--l",
+          isPageHeading: false
+        },
+        hint: {
+          text: "Offer as much supporting information to help us resolve"
+        }
+      }) }}
+
+      {{ govukFileUpload({
+        id: "document",
+        name: "document",
+        label: {
+          text: "Please upload any supporting information (eg, JPEG, Word Document)"
+        }
+      }) }}
+
+      {{ govukButton({
+        text: "Check your answers"
+      }) }}
+    </form>
+  </div>
+</div>
+
+{% endblock %}
