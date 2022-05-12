@@ -60,7 +60,8 @@
         },
         errorMessage: errors | findError('incidentContactDetails'),
         id: "incidentContactDetails",
-        name: "incidentContactDetails"
+        name: "incidentContactDetails",
+        value: formValues.incidentContactDetails
       }) }}
 
       {{ govukInput({
@@ -73,7 +74,8 @@
         },
         errorMessage: errors | findError('incidentAvailability'),
         id: "incidentAvailability",
-        name: "incidentAvailability"
+        name: "incidentAvailability",
+        value: formValues.incidentAvailability
       }) }}
 
       {{ govukTextarea({
@@ -87,7 +89,8 @@
         errorMessage: errors | findError('incidentSupportingInformation'),
         hint: {
           text: "Offer as much supporting information to help us resolve"
-        }
+        },
+        value: formValues.incidentSupportingInformation
       }) }}
 
       {{ govukFileUpload({

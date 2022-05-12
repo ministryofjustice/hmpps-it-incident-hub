@@ -125,6 +125,9 @@ export default function routes(router: Router): Router {
       if (incidentSessionData.incidentAvailability) {
         formValues.incidentAvailability = incidentSessionData.incidentAvailability
       }
+      if (incidentSessionData.incidentSupportingInformation) {
+        formValues.incidentSupportingInformation = incidentSessionData.incidentSupportingInformation
+      }
     }
 
     res.render('pages/incidentContact', {
@@ -149,7 +152,7 @@ export default function routes(router: Router): Router {
         return res.redirect(req.originalUrl)
       }
 
-      incidentSessionData.incidentDescription = req.body.incidentDescription
+      incidentSessionData.incidentContactType = req.body.incidentContactType
       incidentSessionData.incidentContactDetails = req.body.incidentContactDetails
       incidentSessionData.incidentAvailability = req.body.incidentAvailability
       incidentSessionData.incidentSupportingInformation = req.body.incidentSupportingInformation

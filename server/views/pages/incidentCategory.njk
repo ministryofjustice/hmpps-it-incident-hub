@@ -39,7 +39,7 @@
             hint: {
               text: "Are you having issues accessing the elements of the service?"
             },
-            checked: formValues.incidentType == "access-denied"
+            checked: formValues.incidentCategory == "access-denied"
           },
           {
             value: "account-locked",
@@ -47,7 +47,7 @@
             hint: {
               text: "Has your account been locked?"
             },
-            checked: formValues.incidentType == "account-locked"
+            checked: formValues.incidentCategory == "account-locked"
           },
           {
             value: "access-issue",
@@ -55,7 +55,7 @@
             hint: {
               text: "Are you having issues accessing parts of the service?"
             },
-            checked: formValues.incidentType == "access-issue"
+            checked: formValues.incidentCategory == "access-issue"
           },
           {
             value: "security-issue",
@@ -63,7 +63,7 @@
             hint: {
               text: "Has there been a security breach within your service?"
             },
-            checked: formValues.incidentType == "security-issue"
+            checked: formValues.incidentCategory == "security-issue"
           }
         ]
       }) }}
