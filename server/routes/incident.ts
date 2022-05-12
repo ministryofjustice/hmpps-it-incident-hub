@@ -33,13 +33,6 @@ export default function routes(router: Router): Router {
         return res.redirect(req.originalUrl)
       }
 
-      if (!req.session.incidentSessionData) {
-        req.session.incidentSessionData = {
-          incidentType: '',
-          incidentCategory: '',
-        }
-      }
-
       incidentSessionData.incidentType = req.body.incidentType
 
       return res.redirect('/incident/category')
