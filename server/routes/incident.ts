@@ -34,6 +34,7 @@ export default function routes(router: Router): Router {
       }
 
       incidentSessionData.incidentType = req.body.incidentType
+      req.session.incidentSessionData = incidentSessionData
 
       return res.redirect('/incident/category')
     }
@@ -70,6 +71,7 @@ export default function routes(router: Router): Router {
       }
 
       incidentSessionData.incidentCategory = req.body.incidentCategory
+      req.session.incidentSessionData = incidentSessionData
 
       return res.redirect('/incident/description')
     }
@@ -103,6 +105,7 @@ export default function routes(router: Router): Router {
       }
 
       incidentSessionData.incidentDescription = req.body.incidentDescription
+      req.session.incidentSessionData = incidentSessionData
 
       return res.redirect('/incident/contact')
     }
@@ -150,6 +153,7 @@ export default function routes(router: Router): Router {
       incidentSessionData.incidentContactDetails = req.body.incidentContactDetails
       incidentSessionData.incidentAvailability = req.body.incidentAvailability
       incidentSessionData.incidentSupportingInformation = req.body.incidentSupportingInformation
+      req.session.incidentSessionData = incidentSessionData
 
       return res.redirect('/incident/summary')
     }
