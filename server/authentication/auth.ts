@@ -29,6 +29,8 @@ const authenticationMiddleware: AuthenticationMiddleware = verifyToken => {
 }
 
 function init(): void {
+  // eslint-disable-next-line no-console
+  console.log(config.apis.hmppsAuth.apiClientSecret)
   const strategy = new Strategy(
     {
       authorizationURL: `${config.apis.hmppsAuth.externalUrl}/oauth/authorize`,
