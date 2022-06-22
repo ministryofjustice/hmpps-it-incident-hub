@@ -1,7 +1,7 @@
 {
   "name": "hmpps-it-incident-hub",
   "version": "0.0.1",
-  "description": "HMPPS IT Incident Hub",
+  "description": "HMPPS IT Incident  Hub",
   "repository": "git@github.com:ministryofjustice/hmpps-it-incident-hub.git",
   "license": "MIT",
   "scripts": {
