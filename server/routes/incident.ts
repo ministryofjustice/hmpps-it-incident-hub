@@ -1,8 +1,9 @@
 import type { Router } from 'express'
 import { body, validationResult } from 'express-validator'
+import ServiceNowService from '../services/serviceNowService'
 import { getFlashFormValues } from './utils'
 
-export default function routes(router: Router): Router {
+export default function routes(router: Router, serviceNowService: ServiceNowService): Router {
   router.get('/type', async (req, res) => {
     const { incidentSessionData } = req.session
     const formValues = getFlashFormValues(req)
@@ -175,6 +176,44 @@ export default function routes(router: Router): Router {
       incidentAvailability: incidentSessionData.incidentAvailability,
       incidentSupportingInformation: incidentSessionData.incidentSupportingInformation,
     })
+  })
+
+  router.post('/summary', async (req, res) => {
+    const { incidentSessionData } = req.session
+    const description = `
+      Contact: ${incidentSessionData.incidentContactDetails} (${incidentSessionData.incidentContactType})\n
+      Availability: ${incidentSessionData.incidentAvailability}\n
+      Description: ${incidentSessionData.incidentDescription}\n
+      Supporting Information: ${incidentSessionData.incidentSupportingInformation}
+    `
+
+    try {
+      const incident = await serviceNowService.createIncident(
+        incidentSessionData.incidentCategory,
+        incidentSessionData.incidentType,
+        description
+      )
+
+      incidentSessionData.incidentReference = incident.data?.result
+    } catch (error) {
+      return res.render('pages/summary', {
+        errors: [
+          {
+            msg: 'Failed to raise an incident',
+            param: 'id',
+          },
+        ],
+        incidentType: incidentSessionData.incidentType,
+        incidentCategory: incidentSessionData.incidentCategory,
+        incidentDescription: incidentSessionData.incidentDescription,
+        incidentContactType: incidentSessionData.incidentContactType,
+        incidentContactDetails: incidentSessionData.incidentContactDetails,
+        incidentAvailability: incidentSessionData.incidentAvailability,
+        incidentSupportingInformation: incidentSessionData.incidentSupportingInformation,
+      })
+    }
+
+    return res.redirect('/pages/confirmation')
   })
 
   return router
