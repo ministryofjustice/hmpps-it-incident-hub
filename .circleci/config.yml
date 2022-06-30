@@ -155,10 +155,6 @@ workflows:
           env: "dev"
           jira_update: true
           context: hmpps-common-vars
-          filters:
-            branches:
-              only:
-                - main
           requires:
             - helm_lint
             - unit_test
