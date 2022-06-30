@@ -2,7 +2,7 @@
 import nunjucks, { Environment } from 'nunjucks'
 import express from 'express'
 import path from 'path'
-import { FormError } from '../@types/faqTypes'
+import { FormError } from '../@types/incidentTypes'
 
 const production = process.env.NODE_ENV === 'production'
 

@@ -29,13 +29,13 @@ export default class RestClientUserPass {
     return this.config.timeout
   }
 
-  async post({
+  async post<T>({
     path = null,
     headers = {},
     responseType = '',
     data = {},
     raw = false,
-  }: PostRequest = {}): Promise<unknown> {
+  }: PostRequest = {}): Promise<T> {
     logger.info(`Post using user credentials: calling ${this.name}: ${path}`)
     try {
       const result = await superagent

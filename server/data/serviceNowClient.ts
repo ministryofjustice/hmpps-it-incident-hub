@@ -1,17 +1,18 @@
-import RestClient from './restClientUserPass'
+import RestClientUserPass from './restClientUserPass'
 import config from '../config'
+import type { ServiceNowResponse } from '../@types/incidentTypes'
 
 export const serviceNowApiClientBuilder = (): ServiceNowApiClient => {
-  const restClient = new RestClient('serviceNowApi', config.apis.serviceNow)
+  const restClient = new RestClientUserPass('serviceNowApi', config.apis.serviceNow)
   const serviceNowClient = new ServiceNowApiClient(restClient)
 
   return serviceNowClient
 }
 
 class ServiceNowApiClient {
-  constructor(private readonly restclient: RestClient) {}
+  constructor(private readonly restclient: RestClientUserPass) {}
 
-  createIncident(category: string, subcategory: string, description: string): Promise<boolean> {
+  createIncident(category: string, subcategory: string, description: string): Promise<ServiceNowResponse> {
     return this.restclient.post({
       path: '/api/moju2/cloud_ops/create_incident',
       data: {

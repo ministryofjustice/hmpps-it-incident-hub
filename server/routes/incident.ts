@@ -194,7 +194,7 @@ export default function routes(router: Router, serviceNowService: ServiceNowServ
         description
       )
 
-      incidentSessionData.incidentReference = incident.data?.result
+      incidentSessionData.incidentReference = incident
     } catch (error) {
       return res.render('pages/summary', {
         errors: [
@@ -213,7 +213,13 @@ export default function routes(router: Router, serviceNowService: ServiceNowServ
       })
     }
 
-    return res.redirect('/pages/confirmation')
+    return res.redirect('/incident/confirmation')
+  })
+
+  router.get('/confirmation', async (req, res) => {
+    const { incidentSessionData } = req.session
+
+    res.render('pages/confirmation', { incidentNumber: incidentSessionData.incidentReference })
   })
 
   return router
