@@ -10,7 +10,7 @@ import standardRouter from '../standardRouter'
 import UserService from '../../services/userService'
 import FaqService from '../../services/faqService'
 import { faqClientBuilder } from '../../data/faqClient'
-import { IncidentSessionData } from '../../@types/faqTypes'
+import { IncidentSessionData } from '../../@types/incidentTypes'
 import * as auth from '../../authentication/auth'
 
 const user = {

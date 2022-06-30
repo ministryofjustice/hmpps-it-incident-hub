@@ -9,8 +9,10 @@
     <div class="govuk-width-container">
       {{ govukPanel({
         titleText: "Your incident has now been raised",
-        html: "Your reference number<br><strong>INC01223344</strong>"
+        html: "Your reference number<br><strong>" + incidentNumber + "</strong>"
       }) }}
+
+      {% include "partials/errorSummary.njk" %}
 
       <p class="govuk-heading-m">The product support team will be in touch shortly.</p>
 

@@ -31,6 +31,17 @@ export interface ApiConfig {
   agent: AgentConfig
 }
 
+export interface ServiceNowConfig extends ApiConfig {
+  callerId: string
+  departmentId: string
+  serviceOffering: string
+  configItem: string
+  assignmentGroup: string
+  username: string
+  password: string
+  contactType: string
+}
+
 export default {
   https: production,
   staticResourceCacheDuration: 20,
@@ -66,6 +77,22 @@ export default {
       },
       agent: new AgentConfig(Number(get('TOKEN_VERIFICATION_API_TIMEOUT_RESPONSE', 5000))),
       enabled: get('TOKEN_VERIFICATION_ENABLED', 'false') === 'true',
+    },
+    serviceNow: {
+      url: get('SERVICENOW_API_URL', 'http://localhost:8080', requiredInProduction),
+      timeout: {
+        response: Number(get('SERVICENOW_API_TIMEOUT_RESPONSE', 10000)),
+        deadline: Number(get('SERVICENOW_API_TIMEOUT_DEADLINE', 10000)),
+      },
+      agent: new AgentConfig(Number(get('SERVICENOW_API_TIMEOUT_RESPONSE', 10000))),
+      callerId: get('SERVICENOW_CALLER_ID', '1234', requiredInProduction),
+      departmentId: get('SERVICENOW_DEPT_ID', '1234', requiredInProduction),
+      serviceOffering: get('SERVICENOW_SERVICE_OFFERING', '1234', requiredInProduction),
+      configItem: get('SERVICENOW_CONFIG_ITEM', '1234', requiredInProduction),
+      assignmentGroup: get('SERVICENOW_ASSIGNMENT_GROUP', '1234', requiredInProduction),
+      username: get('SERVICENOW_USER', '1234', requiredInProduction),
+      password: get('SERVICENOW_PASS', '1234', requiredInProduction),
+      contactType: get('SERVICENOW_CONTACT_TYPE', '1234', requiredInProduction),
     },
   },
   domain: get('INGRESS_URL', 'http://localhost:3000', requiredInProduction),

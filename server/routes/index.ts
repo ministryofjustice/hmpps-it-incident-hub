@@ -3,7 +3,7 @@ import { decode } from 'html-entities'
 
 import asyncMiddleware from '../middleware/asyncMiddleware'
 import FaqService from '../services/faqService'
-import { IncidentSessionData } from '../@types/faqTypes'
+import { IncidentSessionData } from '../@types/incidentTypes'
 
 export default function routes(router: Router, faqService: FaqService): Router {
   const get = (path: string, handler: RequestHandler) => router.get(path, asyncMiddleware(handler))

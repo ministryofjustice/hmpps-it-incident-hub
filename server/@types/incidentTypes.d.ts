@@ -20,3 +20,12 @@ export type FormError = {
   param: string
   location: string
 }
+
+export type ServiceNowIncident = {
+  message: string
+  incident_number: string
+}
+
+export type ServiceNowResponse = {
+  result: ServiceNowIncident
+}

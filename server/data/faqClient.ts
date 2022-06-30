@@ -1,4 +1,4 @@
-import { FAQ } from '../@types/faqTypes'
+import { FAQ } from '../@types/incidentTypes'
 import faqData from './faqData'
 
 export const faqClientBuilder = (): FaqClient => {

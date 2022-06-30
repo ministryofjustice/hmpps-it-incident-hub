@@ -1,5 +1,5 @@
 import FaqClient from '../data/faqClient'
-import { FAQ } from '../@types/faqTypes'
+import { FAQ } from '../@types/incidentTypes'
 
 type FaqClientBuilder = () => FaqClient
 

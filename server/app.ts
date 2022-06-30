@@ -12,6 +12,9 @@ import type UserService from './services/userService'
 import { faqClientBuilder } from './data/faqClient'
 import FaqService from './services/faqService'
 
+import { serviceNowApiClientBuilder } from './data/serviceNowClient'
+import ServiceNowService from './services/serviceNowService'
+
 import setUpWebSession from './middleware/setUpWebSession'
 import setUpStaticResources from './middleware/setUpStaticResources'
 import setUpWebSecurity from './middleware/setUpWebSecurity'
@@ -39,7 +42,7 @@ export default function createApp(userService: UserService): express.Application
   app.use(authorisationMiddleware())
 
   app.use('/', indexRoutes(standardRouter(userService), new FaqService(faqClientBuilder)))
-  app.use('/incident', incidentRoutes(standardRouter(userService)))
+  app.use('/incident', incidentRoutes(standardRouter(userService), new ServiceNowService(serviceNowApiClientBuilder)))
 
   app.use((req, res, next) => next(createError(404, 'Not found')))
   app.use(errorHandler(process.env.NODE_ENV === 'production'))
