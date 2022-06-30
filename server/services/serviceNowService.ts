@@ -1,5 +1,4 @@
 import ServiceNowClient from '../data/serviceNowClient'
-import logger from '../../logger'
 
 type ServiceNowClientBuilder = () => ServiceNowClient
 
