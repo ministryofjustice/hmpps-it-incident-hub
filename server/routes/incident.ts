@@ -59,7 +59,7 @@ export default function routes(router: Router, serviceNowService: ServiceNowServ
     '/category',
     body('incidentCategory')
       .trim()
-      .isIn(['access-denied', 'account-locked', 'access-issue', 'security-issue'])
+      .isIn(['access denied', 'locked', 'user error', 'data breach'])
       .withMessage('Please select a valid incident category'),
     (req, res) => {
       const { incidentSessionData } = req.session
@@ -189,8 +189,8 @@ export default function routes(router: Router, serviceNowService: ServiceNowServ
 
     try {
       const incident = await serviceNowService.createIncident(
-        incidentSessionData.incidentCategory,
         incidentSessionData.incidentType,
+        incidentSessionData.incidentCategory,
         description
       )
 
