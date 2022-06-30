@@ -9,9 +9,6 @@ export default class ServiceNowService {
   async createIncident(category: string, subcategory: string, description: string): Promise<string> {
     const serviceNowClient = this.serviceNowClientBuilder()
     const response = await serviceNowClient.createIncident(category, subcategory, description)
-
-    logger.info(JSON.stringify(response))
-
     const incidentNumber: string = response.result.incident_number
 
     return incidentNumber
