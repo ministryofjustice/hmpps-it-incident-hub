@@ -12,7 +12,13 @@ export const serviceNowApiClientBuilder = (): ServiceNowApiClient => {
 class ServiceNowApiClient {
   constructor(private readonly restclient: RestClientUserPass) {}
 
-  createIncident(category: string, subcategory: string, description: string): Promise<ServiceNowResponse> {
+  createIncident(
+    category: string,
+    subcategory: string,
+    email: string,
+    shortDescription: string,
+    description: string
+  ): Promise<ServiceNowResponse> {
     return this.restclient.post({
       path: '/api/moju2/cloud_ops/create_incident',
       data: {
@@ -25,7 +31,9 @@ class ServiceNowApiClient {
         cmdb_ci: config.apis.serviceNow.configItem,
         impact: '2',
         assignment_group: config.apis.serviceNow.assignmentGroup,
-        short_description: description,
+        short_description: shortDescription,
+        description,
+        logged_on_behalf: email,
       },
     })
   }

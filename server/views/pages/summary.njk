@@ -61,10 +61,27 @@
       rows: [
         {
           key: {
-            text: "Contact details"
+            text: "Email address"
           },
           value: {
-            text: incidentContactDetails
+            text: incidentEmail
+          },
+          actions: {
+            items: [
+              {
+                href: "/incident/contact",
+                text: "Change",
+                visuallyHiddenText: "name"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Telephone number"
+          },
+          value: {
+            text: incidentTelephone
           },
           actions: {
             items: [
@@ -121,7 +138,7 @@
             text: "Details"
           },
           value: {
-            text: incidentDescription
+            text: incidentShortDescription
           },
           actions: {
             items: [
@@ -138,7 +155,7 @@
             text: "Supporting information"
           },
           value: {
-            text: incidentSupportingInformation
+            text: incidentDescription
           },
           actions: {
             items: [

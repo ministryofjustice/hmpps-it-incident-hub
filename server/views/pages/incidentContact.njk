@@ -53,15 +53,29 @@
       {{ govukInput({
         label: {
           classes: "govuk-label--m",
-          text: "Contact details"
+          text: "Telephone number"
         },
         hint: {
-          text: "E.g. Phone number or justice.gov.uk email address"
+          text: "A number we can contact you on"
         },
-        errorMessage: errors | findError('incidentContactDetails'),
-        id: "incidentContactDetails",
-        name: "incidentContactDetails",
-        value: formValues.incidentContactDetails
+        errorMessage: errors | findError('incidentTelephone'),
+        id: "incidentTelephone",
+        name: "incidentTelephone",
+        value: formValues.incidentTelephone
+      }) }}
+
+      {{ govukInput({
+        label: {
+          classes: "govuk-label--m",
+          text: "Email address"
+        },
+        hint: {
+          text: "Your justice.gov.uk email address (the one registered in ServiceNow)"
+        },
+        errorMessage: errors | findError('incidentEmail'),
+        id: "incidentEmail",
+        name: "incidentEmail",
+        value: formValues.incidentEmail
       }) }}
 
       {{ govukInput({
@@ -79,18 +93,18 @@
       }) }}
 
       {{ govukTextarea({
-        name: "incidentSupportingInformation",
-        id: "incidentSupportingInformation",
+        name: "incidentDescription",
+        id: "incidentDescription",
         label: {
           text: "Give details",
           classes: "govuk-label--m",
           isPageHeading: false
         },
-        errorMessage: errors | findError('incidentSupportingInformation'),
+        errorMessage: errors | findError('incidentDescription'),
         hint: {
           text: "Offer as much supporting information to help us resolve"
         },
-        value: formValues.incidentSupportingInformation
+        value: formValues.incidentDescription
       }) }}
 
       {{ govukFileUpload({

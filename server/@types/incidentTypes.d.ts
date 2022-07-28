@@ -7,11 +7,11 @@ export type FAQ = {
 export type IncidentSessionData = {
   incidentType?: string
   incidentCategory?: string
-  incidentDescription?: string
+  incidentShortDescription?: string
   incidentContactType?: string
-  incidentContactDetails?: string
+  incidentTelephone?: string
   incidentAvailability?: string
-  incidentSupportingInformation?: string
+  incidentDescription?: string
 }
 
 export type FormError = {
