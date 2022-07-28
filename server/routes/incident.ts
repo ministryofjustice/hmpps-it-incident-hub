@@ -143,7 +143,7 @@ export default function routes(router: Router, serviceNowService: ServiceNowServ
   router.post(
     '/contact',
     body('incidentContactType').trim().isIn(['email', 'phone']).withMessage('Please select a valid contact type'),
-    body('incidentEmail').trim().not().isEmail().withMessage('Please enter a valid email address'),
+    body('incidentEmail').trim().isEmail().withMessage('Please enter a valid email address'),
     body('incidentAvailability').trim().not().isEmpty().withMessage('Please enter your availability'),
     body('incidentDescription').trim().not().isEmpty().withMessage('Please enter supporting information'),
     (req, res) => {
