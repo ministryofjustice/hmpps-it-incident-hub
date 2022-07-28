@@ -2,6 +2,9 @@ import type { Router } from 'express'
 import { body, validationResult } from 'express-validator'
 import ServiceNowService from '../services/serviceNowService'
 import { getFlashFormValues } from './utils'
+import logger from '../../logger'
+
+// const production = process.env.NODE_ENV === 'production'
 
 export default function routes(router: Router, serviceNowService: ServiceNowService): Router {
   router.get('/type', async (req, res) => {
@@ -203,6 +206,10 @@ export default function routes(router: Router, serviceNowService: ServiceNowServ
 
       incidentSessionData.incidentReference = incident
     } catch (error) {
+      // if (!production) {
+      logger.error(error)
+      // }
+
       return res.render('pages/summary', {
         errors: [
           {
