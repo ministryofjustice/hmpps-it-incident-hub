@@ -33,7 +33,7 @@ class ServiceNowApiClient {
         assignment_group: config.apis.serviceNow.assignmentGroup,
         short_description: shortDescription,
         description,
-        logged_on_behalf: email,
+        u_logged_on_behalf: email,
       },
     })
   }
