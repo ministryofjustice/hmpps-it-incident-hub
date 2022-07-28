@@ -20,7 +20,7 @@ class ServiceNowApiClient {
     description: string
   ): Promise<ServiceNowResponse> {
     return this.restclient.post({
-      path: '/api/moju2/cloud_ops/create_incident',
+      path: '/api/moju2/v1/service_ops/create_incident',
       data: {
         caller_id: config.apis.serviceNow.callerId,
         u_moj_estate: config.apis.serviceNow.departmentId,
