@@ -19,15 +19,15 @@
       <input type="hidden" name="_csrf" value="{{ csrfToken }}">
 
       {{ govukTextarea({
-        name: "incidentDescription",
-        id: "incidentDescription",
+        name: "incidentShortDescription",
+        id: "incidentShortDescription",
         label: {
           text: "What short description would best explain your issue?",
           classes: "govuk-label--m",
           isPageHeading: false
         },
-        errorMessage: errors | findError('incidentDescription'),
-        value: formValues.incidentDescription
+        errorMessage: errors | findError('incidentShortDescription'),
+        value: formValues.incidentShortDescription
       }) }}
 
       {{ govukButton({
