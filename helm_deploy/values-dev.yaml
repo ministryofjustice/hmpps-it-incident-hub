@@ -7,6 +7,8 @@ generic-service:
   ingress:
     host: it-incident-hub-dev.hmpps.service.justice.gov.uk
     contextColour: green
+    v1_2_enabled: true
+    v0_47_enabled: false
 
   env:
     INGRESS_URL: "https://it-incident-hub-dev.hmpps.service.justice.gov.uk"
