@@ -6,9 +6,10 @@ type FaqClientBuilder = () => FaqClient
 export default class FaqService {
   constructor(private readonly faqClientBuilder: FaqClientBuilder) {}
 
-  async getFaqs(): Promise<FAQ[]> {
+  async getFaqs(clientId: string): Promise<{ clientName: string; faqs: FAQ[] }> {
     const faqClient = this.faqClientBuilder()
-    const faqs = await faqClient.getFaqs()
-    return faqs
+    const clientInformation = await faqClient.getFaqs(clientId)
+
+    return clientInformation
   }
 }
