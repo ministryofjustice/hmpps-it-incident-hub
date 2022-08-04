@@ -6,17 +6,16 @@ import FaqService from '../services/faqService'
 import { IncidentSessionData } from '../@types/incidentTypes'
 
 export default function routes(router: Router, faqService: FaqService): Router {
-  const validClients = ['VSIP']
   const get = (path: string | string[], handler: RequestHandler) => router.get(path, asyncMiddleware(handler))
 
   get(['/', '/:clientId'], async (req, res, next) => {
-    const clientId = req.params.clientId ?? ''
+    const clientId = req.params.clientId?.toLowerCase() ?? ''
+    const clientInformation = await faqService.getFaqs(clientId)
 
-    if (!validClients.includes(clientId.toUpperCase())) {
+    if (clientInformation.clientName === 'Unknown') {
       return res.render('pages/indexNewClient')
     }
 
-    const clientInformation = await faqService.getFaqs(clientId)
     const faqsForDisplay = clientInformation.faqs.map(faq => {
       return {
         heading: {

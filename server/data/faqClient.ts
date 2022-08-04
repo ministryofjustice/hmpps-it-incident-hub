@@ -12,7 +12,10 @@ class FaqClient {
   constructor() {}
 
   getFaqs(clientId: string): { clientName: string; faqs: FAQ[] } {
-    const clientInformation = faqData[clientId]
+    const clientInformation = faqData[clientId] ?? {
+      clientName: 'Unknown',
+      faqs: [],
+    }
 
     return {
       clientName: clientInformation.clientName,
