@@ -16,6 +16,12 @@ export default function routes(router: Router, faqService: FaqService): Router {
       return res.render('pages/indexNewClient')
     }
 
+    const hasFaqs = clientInformation.faqs.length > 0
+
+    if (!hasFaqs) {
+      return res.render('pages/indexNoFaqs', { clientName: clientInformation.clientName })
+    }
+
     const faqsForDisplay = clientInformation.faqs.map(faq => {
       return {
         heading: {

@@ -1,0 +1,24 @@
+{% extends "../partials/layout.njk" %}
+{% from "govuk/components/accordion/macro.njk" import govukAccordion %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/warning-text/macro.njk" import govukWarningText %}
+
+{% set pageHeaderTitle = "Help with " + clientName %}
+{% set pageTitle = applicationName + " - " + pageHeaderTitle %}
+
+{% block content %}
+  <div class="govuk-body">
+    <div class="govuk-width-container">
+      <h1 class="govuk-heading-l">{{ pageHeaderTitle }}</h1>
+
+      <p class="govuk-body">
+        The Prison Visits Booking service provides the ability for prisoner's friends and relatives to book visiting times. Users of the service will be able to:
+      </p>
+
+      {{ govukButton({
+        text: "Raise an Incident",
+        href: "/incident/type"
+      }) }}
+    </div>
+  </div>
+{% endblock %}
