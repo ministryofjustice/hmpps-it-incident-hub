@@ -11,8 +11,16 @@ class FaqClient {
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   constructor() {}
 
-  getFaqs(): FAQ[] {
-    return faqData.faqs
+  getFaqs(clientId: string): { clientName: string; faqs: FAQ[] } {
+    const clientInformation = faqData[clientId] ?? {
+      clientName: 'Unknown',
+      faqs: [],
+    }
+
+    return {
+      clientName: clientInformation.clientName,
+      faqs: clientInformation.faqs,
+    }
   }
 }
 

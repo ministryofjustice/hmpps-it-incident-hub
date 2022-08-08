@@ -6,11 +6,23 @@ import FaqService from '../services/faqService'
 import { IncidentSessionData } from '../@types/incidentTypes'
 
 export default function routes(router: Router, faqService: FaqService): Router {
-  const get = (path: string, handler: RequestHandler) => router.get(path, asyncMiddleware(handler))
+  const get = (path: string | string[], handler: RequestHandler) => router.get(path, asyncMiddleware(handler))
 
-  get('/', async (req, res, next) => {
-    const faqs = await faqService.getFaqs()
-    const faqsForDisplay = faqs.map(faq => {
+  get(['/', '/:clientId'], async (req, res, next) => {
+    const clientId = req.params.clientId?.toLowerCase() ?? ''
+    const clientInformation = await faqService.getFaqs(clientId)
+
+    if (clientInformation.clientName === 'Unknown') {
+      return res.render('pages/indexNewClient')
+    }
+
+    const hasFaqs = clientInformation.faqs.length > 0
+
+    if (!hasFaqs) {
+      return res.render('pages/indexNoFaqs', { clientName: clientInformation.clientName })
+    }
+
+    const faqsForDisplay = clientInformation.faqs.map(faq => {
       return {
         heading: {
           text: faq.heading,
@@ -25,7 +37,7 @@ export default function routes(router: Router, faqService: FaqService): Router {
 
     req.session.incidentSessionData = incidentSessionData
 
-    res.render('pages/index', { faqsForDisplay })
+    return res.render('pages/index', { faqsForDisplay, clientName: clientInformation.clientName })
   })
 
   return router
