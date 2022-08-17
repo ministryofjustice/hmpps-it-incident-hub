@@ -9,7 +9,7 @@ export default function routes(router: Router, faqService: FaqService): Router {
   const get = (path: string | string[], handler: RequestHandler) => router.get(path, asyncMiddleware(handler))
 
   get(['/', '/:clientId'], async (req, res, next) => {
-    const clientId = req.params.clientId?.toLowerCase() ?? ''
+    const clientId = req.params.clientId?.toLowerCase().replace(/[^A-Za-z]/g, '') ?? ''
     const clientInformation = await faqService.getFaqs(clientId)
 
     if (clientInformation.clientName === 'Unknown') {
