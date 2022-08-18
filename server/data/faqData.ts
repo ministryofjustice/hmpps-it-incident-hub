@@ -30,4 +30,19 @@ export default {
       },
     ],
   },
+  incentives: {
+    clientName: 'Incentives',
+    faqs: [
+      {
+        id: 1,
+        heading: 'What is incentives?',
+        body: 'Incentives is a data visualisation to support senior management at a local, regional and national level to use data in their decision-making so they can better deliver against the incentives framework .',
+      },
+      {
+        id: 2,
+        heading: 'How do I access incentives?',
+        body: 'If you have a valid NOMIS account with a caseload you will be able to access the incentives service',
+      },
+    ],
+  },
 }
