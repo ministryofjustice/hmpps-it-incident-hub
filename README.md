@@ -1,5 +1,5 @@
 # hmpps-it-incident-hub
-An application to provide 1st line support for applications, allowing users to view FAQs and submit an incident directly into ServiceNow.
+An application to provide 'zero' line support for applications, allowing users to view FAQs and submit an incident directly into ServiceNow to gain 2nd line support if required.
 
 ## IMPORTANT
 This is currently an alpha/beta phase prototype and currently in development.
