@@ -4,44 +4,78 @@ export default {
     faqs: [
       {
         id: 1,
-        heading: 'Missing prisoner (or missing details about prisoners)',
-        body: 'If the prisoner is not found, they should use global search to see if they’ve been moved or should tell the person they might have the wrong prisoner number and to use the find a prisoner service. If details about the prisoner are missing, they should contact the prison.',
+        heading: 'What is the visit someone in prison service',
+        body: 'The visit someone in prison service provides the ability for prisoners friends and relatives to book visiting times.',
       },
       {
         id: 2,
-        heading: 'Missing visitors (or missing details about visitors)',
-        body: 'If visitor details are missing, my suggestion to the team was we shouldn’t let that visitor be added to the booking but that sparked a debate that I’ve paused until post-MVP. However, the guidance should be if the visitor is missing a name, DOB and/or address, they should contact the prison to get their details updated and the visit should not be booked (as they won’t be allowed through the gate when they arrive anyway).',
+        heading: 'Is there a user guide for the visit someone in prison service?',
+        body: 'For guidance on how to use the service, you can view the user guide [here].',
       },
       {
         id: 3,
-        heading:
-          'Time slots for visits being incorrect (and other data related to visits i.e. room capacity, room location etc)',
-        body: 'If time slots are incorrect or other details about the visit, they should raise as a request through Service Now and we can get that changed.',
+        heading: 'What are technical issues with the service?',
+        body: 'Technical issues are unintended problems with the service, such as slow loading pages and error messages presented by the service. You can report them via the ’raise an incident’ button below',
       },
       {
         id: 4,
-        heading: 'VOs/PVOs missing (or showing as 0 when they shouldn’t be)',
-        body: 'If the VOs or PVOs are wrong, they should check when they were last issued on the screen as well as their visits history and upcoming visits and then they can override our system to mark that they booked without a VO. This will flag in our system (post MVP anyway) and they should also contact the prison.',
-      },
-      {
-        id: 5,
-        heading: 'Bans of longer than 3 months still on a prisoner or visitor account',
-        body: 'They should not book any visitor who has a ban (prisoner’s can’t be banned from visits anyway) even if they believe the ban is incorrect, they should always contact the prison.',
+        heading: 'How do I provide feedback on the visit someone in prison service?',
+        body: 'You can send us feedback to help us to improve the service [here].',
       },
     ],
   },
-  incentives: {
-    clientName: 'Incentives',
+  manageincentives: {
+    clientName: 'Manage Incentives',
     faqs: [
       {
         id: 1,
-        heading: 'What is incentives?',
+        heading: 'What is the manage incentives service?',
         body: 'Incentives is a data visualisation to support senior management at a local, regional and national level to use data in their decision-making so they can better deliver against the incentives framework .',
       },
       {
         id: 2,
         heading: 'How do I access incentives?',
-        body: 'If you have a valid NOMIS account with a caseload you will be able to access the incentives service',
+        body: 'The service can be accessed via the ’Manage Incentives’ tile within the HMPPS Digital Services page. An active NOMIS account with caseload is required to access the service.',
+      },
+    ],
+  },
+  mpc: {
+    clientName: 'Manage Prison Offender Managers’ cases',
+    faqs: [
+      {
+        id: 1,
+        heading: 'What is the manage prison offender managers cases service?',
+        body: 'The manage prison offender managers’ cases service for POM and HOMDs which allows POMs to view their caseloads and manage their workload, whilst HOMDs can allocate cases to POMs and manage their staff.',
+      },
+      {
+        id: 2,
+        heading: 'How do I add staff members to start making allocations?',
+        body: 'Guidance for adding staff can be found at https://moic.service.justice.gov.uk/help_step0',
+      },
+      {
+        id: 3,
+        heading: 'I have quesitons about case responsibility?',
+        body: 'Guidance for case responsibility can be found at https://moic.service.justice.gov.uk/help/case_responsibility',
+      },
+    ],
+  },
+  restrictedpatients: {
+    clientName: 'Restricted Patients',
+    faqs: [
+      {
+        id: 1,
+        heading: 'What is the restricted patients service?',
+        body: 'This service is for managing offenders who are currently held in a secure hospital, but still under the responsibility of the prison. It allows users to transfer an offender to a hospital, remove them once they have been transferred back or released from hospital & also search for an offender to see if they are currently located within a hospital.',
+      },
+      {
+        id: 2,
+        heading: 'Offender is not showing in the restricted patients service?',
+        body: 'Check how the offender was booked out & into the restrcited patients service - was it using the new service or was the offender booked out via classic NOMIS. If the latter, then the prison need to book the offender back in, & then out again using the RP Service tool. ',
+      },
+      {
+        id: 3,
+        heading: 'Offenders have appeared on POM allocation service, yet are in a Secure Hospital?',
+        body: 'If the offender is still serving a prison sentence, then this is correct. The prison has a responsibility to manage a serving offender when they are in a secure hospital. They should therefore be allocated to a POM & managed accordingly.',
       },
     ],
   },
