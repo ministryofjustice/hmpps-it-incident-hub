@@ -74,7 +74,7 @@ export default {
       },
       {
         id: 3,
-        heading: 'Offenders have appeared on POM allocation service, yet are in a Secure Hospital?',
+        heading: 'Offenders have appeared on POM allocation service, yet are in a secure hospital?',
         body: 'If the offender is still serving a prison sentence, then this is correct. The prison has a responsibility to manage a serving offender when they are in a secure hospital. They should therefore be allocated to a POM & managed accordingly.',
       },
     ],
