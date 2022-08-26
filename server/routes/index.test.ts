@@ -12,24 +12,28 @@ afterEach(() => {
   jest.resetAllMocks()
 })
 
-describe('GET /', () => {
-  it('should render index page', () => {
-    return request(app)
-      .get('/')
-      .expect('Content-Type', /html/)
-      .expect(res => {
-        expect(res.text).toContain('IT Incident Support Hub')
-      })
+describe('without a client id', () => {
+  describe('GET /', () => {
+    it('should render index page', () => {
+      return request(app)
+        .get('/')
+        .expect('Content-Type', /html/)
+        .expect(res => {
+          expect(res.text).toContain('IT Incident Support Hub')
+        })
+    })
   })
 })
 
-describe('GET /vsip', () => {
-  it('should render VSIP index page', () => {
-    return request(app)
-      .get('/vsip')
-      .expect('Content-Type', /html/)
-      .expect(res => {
-        expect(res.text).toContain('Help with')
-      })
+describe('with a client id', () => {
+  describe('GET /vsip', () => {
+    it('should render VSIP index page', () => {
+      return request(app)
+        .get('/vsip')
+        .expect('Content-Type', /html/)
+        .expect(res => {
+          expect(res.text).toContain('Help with')
+        })
+    })
   })
 })
