@@ -1,3 +1,12 @@
+main_branch: &main_branch
+  filters:
+    branches:
+      only: main
+feature_branch: &feature_branch
+  filters:
+    branches:
+      ignore: main
+
 version: 2.1
 
 orbs:
@@ -150,10 +159,25 @@ workflows:
           name: helm_lint
       - hmpps/build_docker:
           name: build_docker
+      - request_dev_approval:
+          <<: *feature_branch
+          type: approval
+          requires:
+            - helm_lint
+            - unit_test
+            - integration_test
+            - build_docker
       - hmpps/deploy_env:
+          <<: *feature_branch
+          name: deploy_dev_preview
+          env: "dev"
+          context: hmpps-common-vars
+          requires:
+            - request_dev_approval
+      - hmpps/deploy_env:
+          <<: *main_branch
           name: deploy_dev
           env: "dev"
-          jira_update: true
           context: hmpps-common-vars
           requires:
             - helm_lint
@@ -161,36 +185,33 @@ workflows:
             - integration_test
             - build_docker
 
-#      - request-preprod-approval:
-#          type: approval
-#          requires:
-#            - deploy_dev
-#      - hmpps/deploy_env:
-#          name: deploy_preprod
-#          env: "preprod"
-#          jira_update: true
-#          jira_env_type: staging
-#          context:
-#            - hmpps-common-vars
-#            - hmpps-it-incident-hub-preprod
-#          requires:
-#            - request-preprod-approval
-#      - request-prod-approval:
-#          type: approval
-#          requires:
-#            - deploy_preprod
-#      - hmpps/deploy_env:
-#          name: deploy_prod
-#          env: "prod"
-#          jira_update: true
-#          jira_env_type: production
-#          slack_notification: true
-#          slack_channel_name: << pipeline.parameters.releases-slack-channel >>
-#          context:
-#            - hmpps-common-vars
-#            - hmpps-it-incident-hub-prod
-#          requires:
-#            - request-prod-approval
+      - request-preprod-approval:
+          <<: *main_branch
+          type: approval
+          requires:
+           - deploy_dev
+      - hmpps/deploy_env:
+          name: deploy_preprod
+          env: "preprod"
+          context:
+            - hmpps-common-vars
+            - hmpps-it-incident-hub-preprod
+          requires:
+            - request-preprod-approval
+      - request-prod-approval:
+          type: approval
+          requires:
+            - deploy_preprod
+      - hmpps/deploy_env:
+          name: deploy_prod
+          env: "prod"
+          slack_notification: true
+          slack_channel_name: << pipeline.parameters.releases-slack-channel >>
+          context:
+            - hmpps-common-vars
+            - hmpps-it-incident-hub-prod
+          requires:
+            - request-prod-approval
 
   security:
     triggers:
