@@ -16,11 +16,11 @@ orbs:
 parameters:
   alerts-slack-channel:
     type: string
-    default: prison-visit-booking-alerts-nonprod
+    default: product_support_alerts
 
   releases-slack-channel:
     type: string
-    default: prison-visit-booking-alerts-nonprod
+    default: product_support_alerts
 
   node-version:
     type: string
