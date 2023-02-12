@@ -92,6 +92,33 @@
         value: formValues.incidentAvailability
       }) }}
 
+      {% from "govuk/components/select/macro.njk" import govukSelect %}
+{{ govukSelect({
+  id: "subject",
+  name: "subject",
+  label: {
+    text: "Application"
+  },
+    hint: {
+    text: "This is the part of digital prison services you are currently in"
+  },
+  items: [
+    {
+      value: "choose",
+      text: "Choose location",
+      selected: true
+    },
+    {
+      value: "manageprisonvisits",
+      text: "Manage Prison Visits"
+    },
+    {
+      value: "onlinevisitrequests",
+      text: "Online Visit Requests"
+    },
+   ]
+}) }}
+
       {{ govukTextarea({
         name: "incidentDescription",
         id: "incidentDescription",
