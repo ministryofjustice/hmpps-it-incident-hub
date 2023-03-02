@@ -2,8 +2,8 @@
 {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
 {% from "govuk/components/input/macro.njk" import govukInput %}
 {% from "govuk/components/textarea/macro.njk" import govukTextarea %}
-{% from "govuk/components/file-upload/macro.njk" import govukFileUpload %}
 {% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/select/macro.njk" import govukSelect %}
 
 {% set pageHeaderTitle = "Raise an Incident" %}
 {% set pageTitle %}
@@ -92,6 +92,34 @@
         value: formValues.incidentAvailability
       }) }}
 
+      {{ govukSelect({
+        id: "incidentSubject",
+        name: "incidentSubject",
+        label: {
+          text: "Application",
+          classes: "govuk-label--m"
+        },
+        errorMessage: errors | findError('incidentSubject'),
+        hint: {
+          text: "This is the part of digital prison services you are currently in"
+        },
+        items: [
+          {
+            value: "",
+            text: "Choose location",
+            selected: true
+          },
+          {
+            value: "manageprisonvisits",
+            text: "Manage Prison Visits"
+          },
+          {
+            value: "onlinevisitrequests",
+            text: "Online Visit Requests"
+          },
+        ]
+      }) }}
+
       {{ govukTextarea({
         name: "incidentDescription",
         id: "incidentDescription",
@@ -105,14 +133,6 @@
           text: "Offer as much supporting information to help us resolve"
         },
         value: formValues.incidentDescription
-      }) }}
-
-      {{ govukFileUpload({
-        id: "incidentAttachment",
-        name: "incidentAttachment",
-        label: {
-          text: "Please upload any supporting information (eg, JPEG, Word Document)"
-        }
       }) }}
 
       {{ govukButton({

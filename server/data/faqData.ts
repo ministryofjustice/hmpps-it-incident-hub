@@ -24,6 +24,16 @@ export default {
       },
     ],
   },
+  services: [
+    {
+      value: 'manageprisonvisits',
+      text: 'Manage Prison Visits',
+    },
+    {
+      value: 'onlinevisitrequests',
+      text: 'Online Visit Requests',
+    },
+  ],
   manageincentives: {
     clientName: 'Manage Incentives',
     faqs: [

@@ -14,7 +14,7 @@ generic-service:
     INGRESS_URL: "https://it-incident-hub.hmpps.service.justice.gov.uk"
     HMPPS_AUTH_URL: "https://sign-in.hmpps.service.justice.gov.uk/auth"
     TOKEN_VERIFICATION_API_URL: "https://token-verification-api.prison.service.justice.gov.uk"
-    SERVICENOW_API_URL: "https://mojprod.service-now.com/"
+    SERVICENOW_API_URL: "https://mojprod.service-now.com"
 
 generic-prometheus-alerts:
   alertSeverity: digital-prison-service
