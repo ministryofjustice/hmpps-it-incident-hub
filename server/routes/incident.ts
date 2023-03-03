@@ -133,16 +133,16 @@ export default function routes(router: Router, serviceNowService: ServiceNowServ
       if (incidentSessionData.incidentDescription) {
         formValues.incidentDescription = incidentSessionData.incidentDescription
       }
-      if (incidentSessionData.incidentServices) {
-        formValues.incidentServices = incidentSessionData.incidentServices
+      if (incidentSessionData.incidentService) {
+        formValues.incidentService = incidentSessionData.incidentService
       }
     }
 
-    const formServices = incidentSessionData.incidentServices.map((service: Service) => {
+    const formServices = incidentSessionData.services.map((service: Service) => {
       return {
         value: service.value,
         text: service.text,
-        selected: service.value === incidentSessionData.incidentServices,
+        selected: service.value === incidentSessionData.incidentService,
       }
     })
 
@@ -159,7 +159,7 @@ export default function routes(router: Router, serviceNowService: ServiceNowServ
     body('incidentEmail').trim().isEmail().withMessage('Please enter a valid email address'),
     body('incidentAvailability').trim().not().isEmpty().withMessage('Please enter your availability'),
     body('incidentDescription').trim().not().isEmpty().withMessage('Please enter supporting information'),
-    body('incidentServices').trim().not().isEmpty().withMessage('Please select a service area'),
+    body('incidentService').trim().not().isEmpty().withMessage('Please select a service area'),
     (req, res) => {
       const { incidentSessionData } = req.session
       const errors = validationResult(req)
@@ -175,7 +175,7 @@ export default function routes(router: Router, serviceNowService: ServiceNowServ
       incidentSessionData.incidentEmail = req.body.incidentEmail
       incidentSessionData.incidentAvailability = req.body.incidentAvailability
       incidentSessionData.incidentDescription = req.body.incidentDescription
-      incidentSessionData.incidentServices = req.body.incidentServices
+      incidentSessionData.incidentService = req.body.incidentService
       req.session.incidentSessionData = incidentSessionData
 
       return res.redirect('/incident/summary')
@@ -195,7 +195,7 @@ export default function routes(router: Router, serviceNowService: ServiceNowServ
       incidentEmail: incidentSessionData.incidentEmail,
       incidentAvailability: incidentSessionData.incidentAvailability,
       incidentDescription: incidentSessionData.incidentDescription,
-      incidentServices: incidentSessionData.incidentServices,
+      incidentService: incidentSessionData.incidentService,
     })
   })
 
@@ -206,7 +206,7 @@ export default function routes(router: Router, serviceNowService: ServiceNowServ
       Telephone: ${incidentSessionData.incidentTelephone}\n
       Availability: ${incidentSessionData.incidentAvailability}\n
       Supporting Information: ${incidentSessionData.incidentDescription}\n
-      Subject: ${incidentSessionData.incidentServices}
+      Subject: ${incidentSessionData.incidentService}
     `
 
     try {
@@ -235,7 +235,7 @@ export default function routes(router: Router, serviceNowService: ServiceNowServ
         incidentEmail: incidentSessionData.incidentEmail,
         incidentAvailability: incidentSessionData.incidentAvailability,
         incidentDescription: incidentSessionData.incidentDescription,
-        incidentServices: incidentSessionData.incidentServices,
+        incidentService: incidentSessionData.incidentService,
       })
     }
 
