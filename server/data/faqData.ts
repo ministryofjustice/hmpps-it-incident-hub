@@ -27,10 +27,12 @@ export default {
       {
         value: 'manageprisonvisits',
         text: 'Manage Prison Visits',
+        selected: false,
       },
       {
         value: 'onlinevisitrequests',
         text: 'Online Visit Requests',
+        selected: false,
       },
     ],
   },

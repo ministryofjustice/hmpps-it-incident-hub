@@ -1,6 +1,7 @@
 import type { Router } from 'express'
 import { body, validationResult } from 'express-validator'
 import ServiceNowService from '../services/serviceNowService'
+import { Service } from '../@types/incidentTypes'
 import { getFlashFormValues } from './utils'
 
 export default function routes(router: Router, serviceNowService: ServiceNowService): Router {
@@ -137,10 +138,18 @@ export default function routes(router: Router, serviceNowService: ServiceNowServ
       }
     }
 
+    const formServices = incidentSessionData.incidentServices.map((service: Service) => {
+      return {
+        value: service.value,
+        text: service.text,
+        selected: service.value === incidentSessionData.incidentServices,
+      }
+    })
+
     res.render('pages/incidentContact', {
       errors: req.flash('errors'),
       formValues,
-      services: incidentSessionData.incidentServices,
+      services: formServices,
     })
   })
 

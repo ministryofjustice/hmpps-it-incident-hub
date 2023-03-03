@@ -7,6 +7,7 @@ export type FAQ = {
 export type Service = {
   value: string
   text: string
+  selected: boolean
 }
 
 export type IncidentSessionData = {
