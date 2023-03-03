@@ -93,13 +93,13 @@
       }) }}
 
       {{ govukSelect({
-        id: "incidentSubject",
-        name: "incidentSubject",
+        id: "incidentServices",
+        name: "incidentServices",
         label: {
           text: "Application",
           classes: "govuk-label--m"
         },
-        errorMessage: errors | findError('incidentSubject'),
+        errorMessage: errors | findError('incidentServices'),
         hint: {
           text: "This is the part of digital prison services you are currently in"
         },
