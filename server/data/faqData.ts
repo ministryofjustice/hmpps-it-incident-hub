@@ -23,17 +23,17 @@ export default {
         body: 'You can send us feedback to help us to improve the service [here].',
       },
     ],
+    services: [
+      {
+        value: 'manageprisonvisits',
+        text: 'Manage Prison Visits',
+      },
+      {
+        value: 'onlinevisitrequests',
+        text: 'Online Visit Requests',
+      },
+    ],
   },
-  services: [
-    {
-      value: 'manageprisonvisits',
-      text: 'Manage Prison Visits',
-    },
-    {
-      value: 'onlinevisitrequests',
-      text: 'Online Visit Requests',
-    },
-  ],
   manageincentives: {
     clientName: 'Manage Incentives',
     faqs: [
