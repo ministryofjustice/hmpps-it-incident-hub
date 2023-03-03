@@ -4,6 +4,11 @@ export type FAQ = {
   body: string
 }
 
+export type Service = {
+  value: string
+  text: string
+}
+
 export type IncidentSessionData = {
   incidentType?: string
   incidentCategory?: string
@@ -12,6 +17,7 @@ export type IncidentSessionData = {
   incidentTelephone?: string
   incidentAvailability?: string
   incidentDescription?: string
+  incidentServices?: Service[]
 }
 
 export type FormError = {

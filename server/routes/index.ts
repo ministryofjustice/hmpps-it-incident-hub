@@ -34,6 +34,7 @@ export default function routes(router: Router, faqService: FaqService): Router {
     })
 
     const incidentSessionData: IncidentSessionData = req.session.incidentSessionData || {}
+    incidentSessionData.incidentServices = clientInformation.services
 
     req.session.incidentSessionData = incidentSessionData
 

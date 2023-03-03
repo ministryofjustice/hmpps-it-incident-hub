@@ -140,6 +140,7 @@ export default function routes(router: Router, serviceNowService: ServiceNowServ
     res.render('pages/incidentContact', {
       errors: req.flash('errors'),
       formValues,
+      services: incidentSessionData.services,
     })
   })
 
