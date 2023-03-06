@@ -36,6 +36,7 @@ describe('Service Now Client', () => {
         short_description: shortDescription,
         description,
         u_logged_on_behalf: email,
+        u_external_reference: 'n/a',
       }
       const results = {
         result: {

@@ -1,7 +1,7 @@
 import type { Router } from 'express'
 import { body, validationResult } from 'express-validator'
 import ServiceNowService from '../services/serviceNowService'
-import { Service } from '../@types/incidentTypes'
+import { Service, ServiceNowIncidentSuccess } from '../@types/incidentTypes'
 import { getFlashFormValues } from './utils'
 
 export default function routes(router: Router, serviceNowService: ServiceNowService): Router {
@@ -218,7 +218,27 @@ export default function routes(router: Router, serviceNowService: ServiceNowServ
         description
       )
 
-      incidentSessionData.incidentReference = incident
+      try {
+        incidentSessionData.incidentReference = (<ServiceNowIncidentSuccess>incident.result).incident_number
+      } catch (error) {
+        return res.render('pages/summary', {
+          errors: [
+            {
+              msg: 'Failed to raise an incident, missing field',
+              param: 'id',
+            },
+          ],
+          incidentType: incidentSessionData.incidentType,
+          incidentCategory: incidentSessionData.incidentCategory,
+          incidentShortDescription: incidentSessionData.incidentShortDescription,
+          incidentContactType: incidentSessionData.incidentContactType,
+          incidentTelephone: incidentSessionData.incidentTelephone,
+          incidentEmail: incidentSessionData.incidentEmail,
+          incidentAvailability: incidentSessionData.incidentAvailability,
+          incidentDescription: incidentSessionData.incidentDescription,
+          incidentService: incidentSessionData.incidentService,
+        })
+      }
     } catch (error) {
       return res.render('pages/summary', {
         errors: [
