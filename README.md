@@ -41,7 +41,7 @@ API_CLIENT_SECRET=<yourlocalclientsecret>
 SYSTEM_CLIENT_ID=<yourlocalclientid>
 SYSTEM_CLIENT_SECRET=<yourlocalclientsecret>
 WEB_SESSION_TIMEOUT_IN_MINUTES=300
-SERVICENOW_API_URL=https://mojuat.service-now.com/
+SERVICENOW_API_URL=https://mojuat.service-now.com
 ```
 
 And then, to build the assets and start the app with nodemon:

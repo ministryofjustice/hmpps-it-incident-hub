@@ -34,6 +34,7 @@ class ServiceNowApiClient {
         short_description: shortDescription,
         description,
         u_logged_on_behalf: email,
+        u_external_reference: 'n/a',
       },
     })
   }
