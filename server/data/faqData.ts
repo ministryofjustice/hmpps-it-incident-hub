@@ -5,7 +5,7 @@ export default {
       {
         id: 1,
         heading: 'What is the visit someone in prison service',
-        body: 'The visit someone in prison service provides the ability for prisoners friends and relatives to book visiting times.',
+        body: '<ul><li>test</li></ul>The visit someone in prison service provides the ability for prisoners friends and relatives to book visiting times.',
       },
       {
         id: 2,
