@@ -40,6 +40,7 @@ services:
       - API_CLIENT_SECRET=client-secret
       - SYSTEM_CLIENT_ID=system-client-id
       - SYSTEM_CLIENT_SECRET=system-client-secret
+      - SERVICENOW_API_URL=https://mojuat.service-now.com
 
 networks:
   hmpps:
