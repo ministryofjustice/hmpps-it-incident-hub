@@ -2,24 +2,23 @@
 An application to provide 'zero' line support for applications, allowing users to view FAQs and submit an incident directly into ServiceNow to gain 2nd line support if required.
 
 ## IMPORTANT
-This is currently an alpha/beta phase prototype and currently in development.
+This is currently an beta phase and currently in development.
 
 ## Infrastructure
 
-This project is managed through both [DPS Project Bootstrap](https://github.com/ministryofjustice/dps-project-bootstrap) and [Cloud Platform Environments](https://github.com/ministryofjustice/cloud-platform-environments). Changes to the namespace, RBAC etc should be done through these projects.
+This project is managed through both [DPS Project Bootstrap](https://github.com/ministryofjustice/dps-project-bootstrap) and [Cloud Platform Environments](https://github.com/ministryofjustice/cloud-platform-environments). Changes to the namespace, RBAC etc should be done through those projects.
 
 ## Running the app
 The easiest way to run the app is to use docker compose to create the service and all dependencies. 
 
 `docker-compose pull`
-
 `docker-compose up`
 
 ### Dependencies
 The app requires: 
 * hmpps-auth - for authentication
 * redis - session store and token caching
-* nodejs - version 16
+* nodejs - version 18
 
 ### Running the app for development
 
