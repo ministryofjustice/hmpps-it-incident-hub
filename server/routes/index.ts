@@ -38,7 +38,11 @@ export default function routes(router: Router, faqService: FaqService): Router {
 
     req.session.incidentSessionData = incidentSessionData
 
-    return res.render('pages/index', { faqsForDisplay, clientName: clientInformation.clientName })
+    return res.render('pages/index', {
+      faqsForDisplay,
+      clientName: clientInformation.clientName,
+      clientId: incidentSessionData.incidentClientId,
+    })
   })
 
   return router
