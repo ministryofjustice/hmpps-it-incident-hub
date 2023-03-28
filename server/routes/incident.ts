@@ -267,7 +267,7 @@ export default function routes(router: Router, serviceNowService: ServiceNowServ
 
     res.render('pages/confirmation', {
       incidentNumber: incidentSessionData.incidentReference,
-      clientId: incidentSessionData.incidentClientId,
+      clientId: incidentSessionData.clientId,
     })
   })
 

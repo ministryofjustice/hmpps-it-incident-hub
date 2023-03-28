@@ -41,7 +41,7 @@ export default function routes(router: Router, faqService: FaqService): Router {
     return res.render('pages/index', {
       faqsForDisplay,
       clientName: clientInformation.clientName,
-      clientId: incidentSessionData.incidentClientId,
+      clientId: incidentSessionData.clientId,
     })
   })
 
