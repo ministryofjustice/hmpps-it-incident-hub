@@ -265,7 +265,10 @@ export default function routes(router: Router, serviceNowService: ServiceNowServ
   router.get('/confirmation', async (req, res) => {
     const { incidentSessionData } = req.session
 
-    res.render('pages/confirmation', { incidentNumber: incidentSessionData.incidentReference })
+    res.render('pages/confirmation', {
+      incidentNumber: incidentSessionData.incidentReference,
+      clientId: incidentSessionData.clientId,
+    })
   })
 
   return router

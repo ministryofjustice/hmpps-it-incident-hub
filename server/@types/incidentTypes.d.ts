@@ -19,6 +19,7 @@ export type IncidentSessionData = {
   incidentTelephone?: string
   incidentAvailability?: string
   incidentDescription?: string
+  clientId?: string
   incidentService: string
 }
 
