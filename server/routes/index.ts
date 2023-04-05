@@ -37,6 +37,7 @@ export default function routes(router: Router, faqService: FaqService): Router {
     incidentSessionData.services = clientInformation.services
 
     req.session.incidentSessionData = incidentSessionData
+    incidentSessionData.clientId = clientId
 
     return res.render('pages/index', {
       faqsForDisplay,
