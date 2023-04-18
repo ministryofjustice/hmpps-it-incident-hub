@@ -72,6 +72,11 @@ generic-service:
     cloudplatform-live1-3: "35.177.252.54/32"
     ark-dom1-psn1: 51.247.4.0/24
     ark-dom1-psn2: 51.247.3.0/24
+    ark-dom1-ttp1: "195.59.75.0/24"
+    ark-dom1-farnborough: "194.33.192.0/24"
+    ark-dom1-corsham: "194.33.196.0/24"
+    ark-dom1-non-live-1: "194.33.193.0/25"
+    ark-dom1-non-live-2: "194.33.197.0/25"
     ark-nps-hmcts-ttp1: 195.59.75.0/24
     ark-nps-hmcts-ttp2: 194.33.192.0/25
     ark-nps-hmcts-ttp3: 194.33.193.0/25
