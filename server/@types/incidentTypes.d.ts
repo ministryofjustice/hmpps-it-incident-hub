@@ -26,7 +26,7 @@ export type IncidentSessionData = {
 export type FormError = {
   value: string
   msg: string
-  param: string
+  path: string
   location: string
 }
 
