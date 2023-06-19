@@ -20,7 +20,7 @@ export default {
       {
         id: 4,
         heading: 'How can I get access to the service?',
-        body: 'In order to access the service your establishment needs to have been onboarded which is happening in phases. If you are interested in using the service to manage your establishments social face to face visits, you can complete this short <a href="https://forms.office.com/Pages/ResponsePage.aspx?Host=Teams&lang=%7Blocale%7D&groupId=%7BgroupId%7D&tid=%7Btid%7D&teamsTheme=%7Btheme%7D&upn=%7Bupn%7D&id=KEeHxuZx_kGp4S6MNndq2NZlROVYcypDsUU3dzertcpUN1o4VTVTR1FOM01GWThERTg4T1NTN0tFWSQlQCN0PWcu" class="govuk-link govuk-link--no-visited-state">form</a> and the team will get in touch with you.',
+        body: 'In order to access the service your establishment needs to have been onboarded which is happening in phases. If you are interested in using the service to manage your establishments social face to face visits, you can complete this short <a href="https://forms.office.com/e/K1ThmV7GmT" class="govuk-link govuk-link--no-visited-state">form</a> and the team will get in touch with you.',
       },
     ],
     services: [
@@ -71,23 +71,33 @@ export default {
       },
     ],
   },
-  restrictedpatients: {
-    clientName: 'Restricted Patients',
+  dpsproductsupport: {
+    clientName: 'DPS Product Support',
     faqs: [
       {
         id: 1,
-        heading: 'What is the restricted patients service?',
-        body: 'This service is for managing offenders who are currently held in a secure hospital, but still under the responsibility of the prison. It allows users to transfer an offender to a hospital, remove them once they have been transferred back or released from hospital & also search for an offender to see if they are currently located within a hospital.',
+        heading: 'What is the IT incident hub service?',
+        body: 'This service can be used to gain assistance with issues affecting HMPPS digital prison services applications. If you cannot find help via the bespoke FAQ section then you will be able to raise an incident with the support team within the digital studio.',
       },
       {
         id: 2,
-        heading: 'Offender is not showing in the restricted patients service?',
-        body: 'Check how the offender was booked out & into the restricted patients service - was it using the new service or was the offender booked out via classic NOMIS. If the latter, then the prison need to book the offender back in, & then out again using the RP Service tool. ',
+        heading: 'I have feedback on a HMPPS Digital prison service, where do I raise these?',
+        body: 'Feedback can be given via the following link: https://support.hmpps.service.justice.gov.uk/feedback-and-support',
+      },
+    ],
+  },
+  sentencecalcs: {
+    clientName: 'Calculate a Sentence',
+    faqs: [
+      {
+        id: 1,
+        heading: 'What is the calculate a sentence service?',
+        body: 'The calculate a sentence service will allow users to work out sentence calculations for certain sentences away from the previous offering in C-NOMIS',
       },
       {
-        id: 3,
-        heading: 'Offenders have appeared on POM allocation service, yet are in a secure hospital?',
-        body: 'If the offender is still serving a prison sentence, then this is correct. The prison has a responsibility to manage a serving offender when they are in a secure hospital. They should therefore be allocated to a POM & managed accordingly.',
+        id: 2,
+        heading: 'How can I get access to the service?',
+        body: 'In order to access the service your establishment needs to have been onboarded which is happening in phases and will be available to you once the service has rolled out to your prison',
       },
     ],
   },
