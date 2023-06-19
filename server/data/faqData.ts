@@ -20,7 +20,7 @@ export default {
       {
         id: 4,
         heading: 'How can I get access to the service?',
-        body: 'In order to access the service your establishment needs to have been onboarded which is happening in phases. If you are interested in using the service to manage your establishments social face to face visits, you can complete this short <a href="https://forms.office.com/e/K1ThmV7GmT" class="govuk-link govuk-link--no-visited-state">form</a> and the team will get in touch with you.',
+        body: 'In order to access the service your establishment needs to have been onboarded which is happening in phases. If you are interested in using the service to manage your establishments social face to face visits, you can complete this short <a href="https://forms.office.com/Pages/ResponsePage.aspx?Host=Teams&lang=%7Blocale%7D&groupId=%7BgroupId%7D&tid=%7Btid%7D&teamsTheme=%7Btheme%7D&upn=%7Bupn%7D&id=KEeHxuZx_kGp4S6MNndq2NZlROVYcypDsUU3dzertcpUN1o4VTVTR1FOM01GWThERTg4T1NTN0tFWSQlQCN0PWcu" class="govuk-link govuk-link--no-visited-state">form</a> and the team will get in touch with you.',
       },
     ],
     services: [
