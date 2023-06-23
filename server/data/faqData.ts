@@ -25,13 +25,58 @@ export default {
     ],
     services: [
       {
+        value: 'dpsproductsupport',
+        text: 'Book a Secure Move/PECS',
+        selected: false,
+      },
+      {
+        value: 'calculateasentence',
+        text: 'Calculate a Sentence',
+        selected: false,
+      },
+      {
+        value: 'dpsproductsupport',
+        text: 'Digital Categrisation Tool',
+        selected: false,
+      },
+      {
+        value: 'dpsproductsupport',
+        text: 'HDC (Home Detention Curfew)',
+        selected: false,
+      },
+      {
         value: 'manageprisonvisits',
         text: 'Manage Prison Visits',
         selected: false,
       },
       {
+        value: 'mpc',
+        text: 'MPC (Manage a POM Case)',
+        selected: false,
+      },
+      {
         value: 'onlinevisitrequests',
         text: 'Online Visit Requests',
+        selected: false,
+      },
+      {
+        value: 'pathfinder',
+        text: 'Pathfinder',
+        selected: false,
+      },
+      {
+        value: 'dpsproductsupport',
+        text: 'Restrcited Patients',
+        selected: false,
+      },
+      {
+        value: 'dpsproductsupport',
+        text: 'SOC',
+        selected: false,
+      },
+      {
+        value: 'dpsproductsupport',
+        text: 'Use of Force',
         selected: false,
       },
     ],
@@ -81,8 +126,8 @@ export default {
       },
       {
         id: 2,
-        heading: 'I have feedback on a HMPPS Digital prison service, where do I raise these?',
-        body: 'Feedback can be given via the following link: https://support.hmpps.service.justice.gov.uk/feedback-and-support',
+        heading: 'I have feedback on a HMPPS Digital prison service, where do I raise this?',
+        body: 'Feedback can be given via the following link <a href="https://support.hmpps.service.justice.gov.uk/feedback-and-support" class="govuk-link govuk-link--no-visited-state">form</a>',
       },
     ],
   },
@@ -93,6 +138,21 @@ export default {
         id: 1,
         heading: 'What is the calculate a sentence service?',
         body: 'The calculate a sentence service will allow users to work out sentence calculations for certain sentences away from the previous offering in C-NOMIS',
+      },
+      {
+        id: 2,
+        heading: 'How can I get access to the service?',
+        body: 'In order to access the service your establishment needs to have been onboarded which is happening in phases and will be available to you once the service has rolled out to your prison',
+      },
+    ],
+  },
+  onlinevisitrequests: {
+    clientName: 'Online Visit Requests',
+    faqs: [
+      {
+        id: 1,
+        heading: 'What is the online visit requests service',
+        body: 'The online visit requests service',
       },
       {
         id: 2,
