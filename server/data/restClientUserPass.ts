@@ -17,7 +17,10 @@ interface PostRequest {
 export default class RestClientUserPass {
   agent: Agent
 
-  constructor(private readonly name: string, private readonly config: ServiceNowConfig) {
+  constructor(
+    private readonly name: string,
+    private readonly config: ServiceNowConfig
+  ) {
     this.agent = config.url.startsWith('https') ? new HttpsAgent(config.agent) : new Agent(config.agent)
   }
 
