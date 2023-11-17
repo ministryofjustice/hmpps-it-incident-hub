@@ -120,7 +120,7 @@ const stubUser = () =>
   stubFor({
     request: {
       method: 'GET',
-      urlPattern: '/auth/api/user/me',
+      urlPattern: '/hmpps-manage-users/users/me',
     },
     response: {
       status: 200,
@@ -140,7 +140,7 @@ const stubUserRoles = () =>
   stubFor({
     request: {
       method: 'GET',
-      urlPattern: '/auth/api/user/me/roles',
+      urlPattern: '/hmpps-manage-users/users/me/roles',
     },
     response: {
       status: 200,
