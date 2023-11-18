@@ -78,6 +78,18 @@ export default {
       agent: new AgentConfig(Number(get('TOKEN_VERIFICATION_API_TIMEOUT_RESPONSE', 5000))),
       enabled: get('TOKEN_VERIFICATION_ENABLED', 'false') === 'true',
     },
+    hmppsManageUsersApi: {
+      url: get('HMPPS_MANAGE_USERS_URL', 'http://localhost:8096', requiredInProduction),
+      timeout: {
+        response: Number(get('HMPPS_AUTH_TIMEOUT_RESPONSE', 20000)),
+        deadline: Number(get('HMPPS_AUTH_TIMEOUT_DEADLINE', 20000)),
+      },
+      agent: new AgentConfig(),
+      apiClientId: get('API_CLIENT_ID', 'interventions', requiredInProduction),
+      apiClientSecret: get('API_CLIENT_SECRET', 'clientsecret', requiredInProduction),
+      systemClientId: get('SYSTEM_CLIENT_ID', 'interventions', requiredInProduction),
+      systemClientSecret: get('SYSTEM_CLIENT_SECRET', 'clientsecret', requiredInProduction),
+    },
     serviceNow: {
       url: get('SERVICENOW_API_URL', 'http://localhost:8080', requiredInProduction),
       timeout: {
