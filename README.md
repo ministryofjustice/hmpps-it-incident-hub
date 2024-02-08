@@ -6,7 +6,7 @@ This is currently an beta phase and currently in development.
 
 ## Infrastructure
 
-This project is managed through both [DPS Project Bootstrap](https://github.com/ministryofjustice/dps-project-bootstrap) and [Cloud Platform Environments](https://github.com/ministryofjustice/cloud-platform-environments). Changes to the namespace, RBAC etc should be done through those projects.
+This project is managed through both [HMPPS Project Bootstrap](https://github.com/ministryofjustice/hmpps-project-bootstrap) and [Cloud Platform Environments](https://github.com/ministryofjustice/cloud-platform-environments). Changes to the namespace, RBAC etc should be done through those projects.
 
 ## Running the app
 The easiest way to run the app is to use docker compose to create the service and all dependencies. 
