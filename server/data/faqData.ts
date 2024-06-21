@@ -1,4 +1,6 @@
-export default {
+import { FAQData } from '../@types/incidentTypes'
+
+const faqData = {
   manageprisonvisits: {
     clientName: 'Manage Prison Visits',
     faqs: [
@@ -171,4 +173,6 @@ export default {
       },
     ],
   },
-}
+} as unknown as FAQData
+
+export default faqData
