@@ -1,4 +1,4 @@
-import { FAQ, Service } from '../@types/incidentTypes'
+import { ClientInformation } from '../@types/incidentTypes'
 import faqData from './faqData'
 
 export const faqClientBuilder = (): FaqClient => {
@@ -11,12 +11,15 @@ class FaqClient {
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   constructor() {}
 
-  getFaqs(clientId: string): { clientName: string; services: Service[]; faqs: FAQ[] } {
-    const clientInformation = faqData[clientId] ?? {
-      clientName: 'Unknown',
-      services: [],
-      faqs: [],
-    }
+  getFaqs(clientId: string): ClientInformation {
+    const existingClientInformation = faqData[clientId] as unknown as ClientInformation
+    const clientInformation =
+      existingClientInformation ||
+      ({
+        clientName: 'Unknown',
+        services: [],
+        faqs: [],
+      } as ClientInformation)
 
     return {
       clientName: clientInformation.clientName,

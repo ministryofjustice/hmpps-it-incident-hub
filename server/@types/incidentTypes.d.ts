@@ -10,6 +10,15 @@ export type Service = {
   selected: boolean
 }
 
+export type ClientInformation = {
+  clientName: string
+  services: Service[]
+  faqs: FAQ[]
+}
+export type FAQData = {
+  [key: string]: ClientInformation[]
+}
+
 export type IncidentSessionData = {
   services?: Service[]
   incidentType?: string
